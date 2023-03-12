@@ -18,12 +18,12 @@
       "next_page_link": "{{@ base_url @}}/v2/{{ properties.datatype }}?from={{ body.from + body.count }}",
       "next_page_termination_strategy": "empty-result",
       "payload_property": "values",
-      "url": "{{ properties.datatype }}"
+      "url": "{{ properties.datatype }}?fields=*,changes"
     },
     "lookup": {
       "method": "GET",
-      "url": "{{ properties.datatype }}/{{ entity.id }}",
-      "payload_property": "value"
+      "payload_property": "value",
+      "url": "{{ properties.datatype }}/{{ entity.id }}?fields=*,changes"
     },
     "update": {
       "method": "PUT",

@@ -171,7 +171,7 @@
   },
   {
     "_id": "{{@ system @}}-{{@ datatype @}}-registerwebhook",
-    "comment": "Can't use the same template as customer, as the webhooks for {{@ datatype @}}s are different",
+    "comment": "Can't use the same temp@}}s are different",
     "namespaced_identifiers": false,
     "source": {
       "entities": [

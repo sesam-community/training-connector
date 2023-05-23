@@ -518,6 +518,14 @@
       "next_page_termination_strategy": "empty-result",
       "payload_property": "values",
       "url": "event/subscription"
+    },
+     "boyrg": {
+      "id_expression": "{{ id }}",
+      "method": "GET",
+      "next_page_link": "{{@ base_url @}}/v2/event/subscription?from={{ body.from + body.count }}",
+      "next_page_termination_strategy": "empty-result",
+      "payload_property": "values",
+      "url": "event/subscription"
     }
   },
   "rate_limiting_retries": 3,

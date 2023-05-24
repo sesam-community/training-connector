@@ -1,0 +1,200 @@
+[
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-all",
+    "namespaced_identifiers": false,
+    "source": {
+      "operation": "{{@ datatype @}}-list",
+      "properties": {
+        "DateFrom": "1970-01-01",
+        "DateTo": "2999-01-01",
+        "datatype": "{{@ datatype @}}"
+      },
+      "system": "{{@ system @}}",
+      "type": "rest"
+    },
+    "type": "pipe"
+  },
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-collect",
+    "namespaced_identifiers": false,
+    "source": {
+      "datasets": [
+        "{{@ system @}}-{{@ datatype @}}-all",
+        "{{@ system @}}-{{@ datatype @}}-event2"
+      ],
+      "type": "merge_datasets"
+    },
+    "transform": [
+      {
+        "rules": {
+          "default": [
+            [
+              "copy",
+              "*"
+            ],
+            [
+              "merge",
+              [
+                "max",
+                "_.",
+                [
+                  "apply",
+                  "last-modified",
+                  "_S.changes"
+                ]
+              ]
+            ],
+            ["add","changes",["filter",["eq", "_.changeType", "CREATE"], "_S.changes"]]
+          ],
+          "last-modified": [
+            [
+              "filter",
+              [
+                "in",
+                "_S.changeType",
+                ["list", "UPDATE", "CREATE"]
+              ]
+            ],
+             [
+              "add",
+              "$last-modified",
+              [
+                "datetime-parse",
+                "%Y-%m-%dT%H:%M:%S%z",
+                "_S.timestamp"
+              ]
+            ]
+          ]
+        },
+        "type": "dtl"
+      }
+    ],
+    "type": "pipe"
+  },
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-event",
+    "compaction": {
+      "keep_versions": 0,
+      "time_threshold_hours": 168
+    },
+    "namespaced_identifiers": false,
+    "source": {
+      "type": "http_endpoint"
+    },
+    "transform": [
+      {
+        "rules": {
+          "default": [
+            [
+              "copy",
+              "*"
+            ],
+            [
+              "add",
+              "_id",
+              [
+                "string",
+                "_S.id"
+              ]
+            ]
+          ]
+        },
+        "type": "dtl"
+      }
+    ],
+    "type": "pipe"
+  },
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-event2",
+    "namespaced_identifiers": false,
+    "source": {
+      "dataset": "{{@ system @}}-{{@ datatype @}}-event",
+      "type": "dataset"
+    },
+    "transform": {
+      "rules": {
+        "default": [
+          [
+            "if",
+            [
+              "eq",
+              "_S.event",
+              "{{@ datatype @}}.delete"
+            ],
+            [
+              "add",
+              "_deleted",
+              true
+            ]
+          ],
+          [
+            "merge",
+            "_S.value"
+          ],
+          [
+            "merge",
+            [
+              "max",
+              "_.",
+              [
+                "apply",
+                "last-modified",
+                "_S.changes"
+              ]
+            ]
+          ],
+          ["add","changes",["filter",["eq", "_.changeType", "CREATE"], "_S.changes"]]
+        ],
+        "last-modified": [
+          [
+            "filter",
+            [
+              "in",
+              "_S.changeType",
+              ["list", "UPDATE", "CREATE"]
+            ]
+          ],
+         [
+            "add",
+            "$last-modified",
+            [
+              "datetime-parse",
+              "%Y-%m-%dT%H:%M:%S%z",
+              "_S.timestamp"
+            ]
+          ]
+        ]
+      },
+      "type": "dtl"
+    },
+    "type": "pipe"
+  },
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-registerwebhook",
+    "comment": "Can't use the same template as customer, as the webhooks for {{@ datatype @}}s are different",
+    "namespaced_identifiers": false,
+    "source": {
+      "entities": [
+        {
+          "_id": "{{@ datatype @}}-charged",
+          "_updated": 0,
+          "properties": {
+            "event": "{{@ datatype @}}.charged",
+            "targetUrl": "{{@ service_url @}}/receivers/{{@ system @}}-{{@ datatype @}}-event/entities"
+          }
+        }
+      ],
+      "supports_since": true,
+      "type": "embedded"
+    },
+    "transform": {
+      "allowed_status_codes": "200,201",
+      "operation": "webhook-insert",
+      "replace_entity": false,
+      "side_effects": true,
+      "system": "{{@ system @}}",
+      "type": "rest"
+    },
+    "type": "pipe"
+  }
+]

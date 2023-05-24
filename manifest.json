@@ -1,0 +1,92 @@
+{
+  "additional_parameters": {
+    "base_url": {},
+    "service_url": {}
+  },
+  "auth": "api_key",
+  "auth_variant": "tripletex",
+  "datatypes": {
+    "address": {
+      "label": "Address",
+      "template": "templates/customercategory.json"
+    },
+    "contact": {
+      "label": "Contact",
+      "template": "templates/contact.json"
+    },
+    "country": {
+      "label": "Country",
+      "template": "templates/country.json"
+    },
+    "currency": {
+      "label": "Currency",
+      "template": "templates/currency.json"
+    },
+    "customer": {
+      "label": "Customer",
+      "template": "templates/customer.json"
+    },
+    "customercategory": {
+      "label": "Customer Category",
+      "template": "templates/customercategory.json"
+    },
+    "department": {
+      "label": "Department",
+      "template": "templates/contact.json"
+    },
+    "employee": {
+      "label": "Employee",
+      "template": "templates/contact.json"
+    },
+    "invoice": {
+      "label": "Invoice",
+      "template": "templates/invoice.json"
+    },
+    "order": {
+      "label": "Order",
+      "template": "templates/contact.json"
+    },
+    "orderline": {
+      "label": "Order Line",
+      "template": "templates/orderline.json"
+    },
+    "product": {
+      "label": "Product",
+      "template": "templates/contact.json"
+    },
+    "productgroup": {
+      "label": "Product Group",
+      "template": "templates/customercategory.json"
+    },
+    "productgrouprelation": {
+      "label": "Product Group Relation",
+      "template": "templates/customercategory.json"
+    },
+    "productunit": {
+      "label": "Product Unit",
+      "template": "templates/customercategory.json"
+    },
+    "project": {
+      "label": "Project",
+      "template": "templates/contact.json"
+    },
+    "projectcategory": {
+      "label": "Project Category",
+      "template": "templates/customercategory.json"
+    },
+    "supplier": {
+      "label": "Supplier",
+      "template": "templates/contact.json"
+    },
+    "vattype": {
+      "label": "VAT Type",
+      "template": "templates/country.json"
+    },
+    "webhook": {
+      "template": "templates/webhook.json"
+    }
+  },
+  "requires_service_api_access": true,
+  "system-template": "templates/system.json",
+  "use_webhook_secret": true
+}

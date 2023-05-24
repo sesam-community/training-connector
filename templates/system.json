@@ -2,35 +2,6 @@
   "_id": "{{@ system @}}",
   "authentication": "basic",
   "operations": {
-    "address-delete": {
-      "method": "DELETE",
-      "url": "address/{{ entity.id }}"
-    },
-    "address-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "address"
-    },
-    "address-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/address?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "address?fields=*,changes"
-    },
-    "address-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "address/{{ entity.id }}?fields=*,changes"
-    },
-    "address-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "address/{{ entity.id }}"
-    },
     "contact-delete": {
       "method": "DELETE",
       "url": "contact/list?ids={{ entity.id }}"
@@ -59,56 +30,6 @@
       "payload-type": "json",
       "payload_property": "value",
       "url": "contact/{{ entity.id }}"
-    },
-    "country-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/country?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "country?fields=*,changes"
-    },
-    "country-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "country/{{ entity.id }}?fields=*,changes"
-    },
-    "currency-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/currency?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "currency?fields=*,changes"
-    },
-    "customer-delete": {
-      "method": "DELETE",
-      "url": "customer/{{ entity.id }}"
-    },
-    "customer-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "customer"
-    },
-    "customer-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/customer?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "customer?fields=*,changes,postalAddress(*),physicalAddress(*),deliveryAddress(*)"
-    },
-    "customer-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "customer/{{ entity.id }}?fields=*,changes,postalAddress(*),physicalAddress(*),deliveryAddress(*)"
-    },
-    "customer-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "customer/{{ entity.id }}"
     },
     "customercategory-delete": {
       "method": "DELETE",
@@ -139,163 +60,15 @@
       "payload_property": "value",
       "url": "customer/category/{{ entity.id }}"
     },
-    "department-delete": {
-      "method": "DELETE",
-      "url": "department/{{ entity.id }}"
-    },
-    "department-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "department"
-    },
-    "department-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/department?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "department?fields=*,changes"
-    },
-    "department-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "department/{{ entity.id }}?fields=*,changes"
-    },
-    "department-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "department/{{ entity.id }}"
-    },
     "employee-delete": {
       "method": "DELETE",
       "url": "employee/{{ entity.id }}"
-    },
-    "employee-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "employee"
-    },
-    "employee-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/employee?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "employee?fields=*,changes"
-    },
-    "employee-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "employee/{{ entity.id }}?fields=*,changes"
-    },
-    "employee-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "employee/{{ entity.id }}"
-    },
-    "invoice-delete": {
-      "method": "DELETE",
-      "url": "invoice/{{ entity.id }}"
-    },
-    "invoice-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "invoice"
-    },
-    "invoice-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/invoice?from={{ body.from + body.count }}&invoiceDateFrom=1970-01-01&invoiceDateTo=2999-01-01",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "invoice?invoiceDateFrom=1970-01-01&invoiceDateTo=2999-01-01&fields=*,changes"
-    },
-    "invoice-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "invoice/{{ entity.id }}?fields=*,changes"
-    },
-    "invoice-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "invoice/{{ entity.id }}"
-    },
-    "order-delete": {
-      "method": "DELETE",
-      "url": "order/{{ entity.id }}"
-    },
-    "order-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "order"
-    },
-    "order-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/order?from={{ body.from + body.count }}&orderDateFrom=1970-01-01&orderDateTo=2999-01-01",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "order?orderDateFrom=1970-01-01&orderDateTo=2999-01-01&fields=*,changes"
-    },
-    "order-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "order/{{ entity.id }}?fields=*,changes"
-    },
-    "order-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "order/{{ entity.id }}"
-    },
-    "orderline-delete": {
-      "method": "DELETE",
-      "url": "order/orderline/{{ entity.id }}"
-    },
-    "orderline-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "order/orderline"
-    },
-    "orderline-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/order/orderline?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "order/orderline?fields=*,changes"
-    },
-    "orderline-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "order/orderline/{{ entity.id }}?fields=*,changes"
-    },
-    "orderline-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "order/orderline/{{ entity.id }}"
     },
     "product-delete": {
       "method": "DELETE",
       "url": "product/{{ entity.id }}"
     },
-    "product-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "product"
-    },
     "product-list": {
-      "id_expression": "{{ id }}",
       "method": "GET",
       "next_page_link": "{{@ base_url @}}/v2/product?from={{ body.from + body.count }}",
       "next_page_termination_strategy": "empty-result",
@@ -303,15 +76,9 @@
       "url": "product?fields=*,changes"
     },
     "product-lookup": {
-      "method": "GET",
+      "method": "OPTIONS",
       "payload_property": "value",
       "url": "product/{{ entity.id }}?fields=*,changes"
-    },
-    "product-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "product/{{ entity.id }}"
     },
     "productgroup-delete": {
       "method": "DELETE",
@@ -399,130 +166,11 @@
       "payload-type": "json",
       "payload_property": "value",
       "url": "product/unit/{{ entity.id }}"
-    },
-    "project-delete": {
-      "method": "DELETE",
-      "url": "project/{{ entity.id }}"
-    },
-    "project-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "project"
-    },
-    "project-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/project?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "project?fields=*,changes"
-    },
-    "project-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "project/{{ entity.id }}?fields=*,changes"
-    },
-    "project-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "project/{{ entity.id }}"
-    },
-    "projectcategory-delete": {
-      "method": "DELETE",
-      "url": "project/category/{{ entity.id }}"
-    },
-    "projectcategory-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "project/category"
-    },
-    "projectcategory-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/project/category?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "project/category?fields=*,changes"
-    },
-    "projectcategory-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "project/category/{{ entity.id }}?fields=*,changes"
-    },
-    "projectcategory-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "project/category/{{ entity.id }}"
-    },
-    "supplier-delete": {
-      "method": "DELETE",
-      "url": "supplier/{{ entity.id }}"
-    },
-    "supplier-insert": {
-      "method": "POST",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "supplier"
-    },
-    "supplier-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/supplier?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "supplier?fields=*,changes"
-    },
-    "supplier-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "supplier/{{ entity.id }}?fields=*,changes"
-    },
-    "supplier-update": {
-      "method": "PUT",
-      "payload-type": "json",
-      "payload_property": "value",
-      "url": "supplier/{{ entity.id }}"
-    },
-    "vattype-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/ledger/vatType?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "ledger/vatType?fields=*,changes"
-    },
-    "vattype-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "ledger/vatType/{{ entity.id }}?fields=*,changes"
-    },
-    "webhook-insert": {
-      "method": "POST",
-      "payload": {
-        "authHeaderName": "Authorization",
-        "authHeaderValue": "Bearer $SECRET(service_jwt)",
-        "event": "{{ properties.event }}",
-        "targetUrl": "{{ properties.targetUrl }}"
-      },
-      "payload-type": "json",
-      "url": "event/subscription"
-    },
-    "webhook-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
-      "next_page_link": "{{@ base_url @}}/v2/event/subscription?from={{ body.from + body.count }}",
-      "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "event/subscription"
     }
   },
-  "rate_limiting_retries": 3,
-  "rate_limiting_delay": 60,
   "password": "$SECRET(sessionToken)",
+  "rate_limiting_delay": 60,
+  "rate_limiting_retries": 3,
   "type": "system:rest",
   "url_pattern": "{{@ base_url @}}/v2/%s",
   "username": "0",

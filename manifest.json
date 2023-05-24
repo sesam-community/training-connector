@@ -1,26 +1,21 @@
 {
   "additional_parameters": {
-    "base_url": {},
-    "service_url": {}
+    "base_url": {}
   },
   "auth": "api_key",
   "auth_variant": "tripletex",
   "datatypes": {
-    "country": {
-      "label": "Country",
-      "template": "templates/country.json"
+    "contact": {
+      "label": "Contact",
+      "template": "templates/contact.json"
     },
     "customercategory": {
       "label": "Product Group",
       "template": "templates/customercategory.json"
     },
-    "currency": {
-      "label": "Currency",
-      "template": "templates/currency.json"
-    },
     "product": {
       "label": "Product",
-      "template": "templates/contact.json"
+      "template": "templates/product.json"
     },
     "productgroup": {
       "label": "Product Group",

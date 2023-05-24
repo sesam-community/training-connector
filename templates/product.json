@@ -54,24 +54,10 @@
           ],
           "last-modified": [
             [
-              "filter",
-              [
-                "in",
-                "_S.changeType",
-                [
-                  "list",
-                  "UPDATE",
-                  "CREATE"
-                ]
-              ]
-            ],
-            [
               "add",
               "$last-modified",
               [
-                "datetime-parse",
-                "%Y-%m-%dT%H:%M:%S%z",
-                "_S.timestamp"
+                "now"
               ]
             ]
           ]

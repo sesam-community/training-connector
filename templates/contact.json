@@ -1,25 +1,15 @@
 [
   {
-    "_id": "{{@ system @}}-{{@ datatype @}}-all",
-    "namespaced_identifiers": false,
-    "source": {
-      "operation": "{{@ datatype @}}-list",
-      "system": "{{@ system @}}",
-      "type": "rest"
-    },
-    "type": "pipe"
-  },
-  {
     "_id": "{{@ system @}}-{{@ datatype @}}-collect",
     "exclude_completeness": [
       "{{@ system @}}-{{@ datatype @}}-share"
     ],
     "namespaced_identifiers": false,
     "source": {
-      "datasets": [
-        "{{@ system @}}-{{@ datatype @}}-all"
-      ],
-      "type": "merge_datasets"
+      "operation": "{{@ datatype @}}-list",
+      "system": "{{@ system @}}",
+      "trace": true,
+      "type": "rest"
     },
     "transform": [
       {

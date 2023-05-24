@@ -25,7 +25,10 @@
             ]
           ]
         ],
-        ["remove", "changes"]
+        [
+          "remove",
+          "changes"
+        ]
       ],
       "last-modified": [
         [
@@ -33,10 +36,14 @@
           [
             "in",
             "_S.changeType",
-            ["list", "UPDATE", "CREATE"]
+            [
+              "list",
+              "UPDATE",
+              "CREATE"
+            ]
           ]
         ],
-     [
+        [
           "add",
           "$last-modified",
           [

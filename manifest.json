@@ -53,9 +53,6 @@
     "vattype": {
       "label": "VAT Type",
       "template": "templates/country.json"
-    },
-    "webhook": {
-      "template": "templates/webhook.json"
     }
   },
   "requires_service_api_access": true,

@@ -24,7 +24,8 @@ training-connector/
 - [Tripletex API documentation](https://tripletex.no/v2-docs/)
 - [internal wiki for the connector-workflow](https://github.com/datanav/infrastructure/wiki/Connector-development-process#connector-development)
 - [Internal tripletex wiki](https://github.com/datanav/infrastructure/wiki/Connectors%3ATripletex)
-- [connector contract](https://docs.sesam.io/hub/documentation/data-synchronization/connectors/contract-connectors.html)
+- [Connector Contract](https://docs.sesam.io/hub/documentation/data-synchronization/connectors/contract-connectors.html)
+- [Rest Transform Docs](https://docs.sesam.io/hub/documentation/service-configuration/pipes/configuration-transforms-rest.html)
 - Run collect pipes to test that upload works.
   - Pump-failed.. 
     - Trace works wonders! You can read about the details on docs

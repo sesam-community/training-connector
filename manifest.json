@@ -10,10 +10,6 @@
       "label": "Address",
       "template": "templates/customercategory.json"
     },
-    "contact": {
-      "label": "Contact",
-      "template": "templates/contact.json"
-    },
     "country": {
       "label": "Country",
       "template": "templates/country.json"
@@ -30,29 +26,13 @@
       "label": "Customer Category",
       "template": "templates/customercategory.json"
     },
-    "department": {
-      "label": "Department",
-      "template": "templates/contact.json"
-    },
-    "employee": {
-      "label": "Employee",
-      "template": "templates/contact.json"
-    },
     "invoice": {
       "label": "Invoice",
       "template": "templates/invoice.json"
     },
-    "order": {
-      "label": "Order",
-      "template": "templates/contact.json"
-    },
     "orderline": {
       "label": "Order Line",
       "template": "templates/orderline.json"
-    },
-    "product": {
-      "label": "Product",
-      "template": "templates/contact.json"
     },
     "productgroup": {
       "label": "Product Group",
@@ -66,17 +46,9 @@
       "label": "Product Unit",
       "template": "templates/customercategory.json"
     },
-    "project": {
-      "label": "Project",
-      "template": "templates/contact.json"
-    },
     "projectcategory": {
       "label": "Project Category",
       "template": "templates/customercategory.json"
-    },
-    "supplier": {
-      "label": "Supplier",
-      "template": "templates/contact.json"
     },
     "vattype": {
       "label": "VAT Type",

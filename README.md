@@ -24,12 +24,13 @@ You should not change the json files within the templates folder locally. The `m
 3. Update the Tripletex product you inserted (you will need to repost and edit an entity to do this)
 4. $last-modified is using \["now"\]. Use data from the incoming entity instead
 5. Add the project datatype
+   -HINT: can you reuse an existing template? 
 
 ## Helpful Links and tips
 - [Tripletex API documentation](https://tripletex.no/v2-docs/)
 - [internal wiki for the connector-workflow](https://github.com/datanav/sesam-talk-config/wiki/Connector-Development-Pipeline)
 - [Internal tripletex wiki](https://github.com/datanav/sesam-talk-config/wiki/Connectors:Tripletex)
-  - "Older account, not used" is what we have been using for testing. Otherwise create own account and populate with contact and product data.
+  - "Older account, not used" is what we have been using for training. Otherwise create own account and populate with contact and product data.
 - [Connector Contract](https://docs.sesam.io/hub/documentation/data-synchronization/connectors/contract-connectors.html)
 - [Rest Transform Docs](https://docs.sesam.io/hub/documentation/service-configuration/pipes/configuration-transforms-rest.html)
 - Run collect pipes to test that upload works.

@@ -80,6 +80,12 @@
       "payload_property": "value",
       "url": "product/{{ entity.id }}?fields=*,changes"
     },
+    "product-update": {
+      "method": "PUT",
+      "payload-type": "json",
+      "payload_property": "value",
+      "url": "product/{{ entity.id }}"
+    },
     "productgroup-delete": {
       "method": "DELETE",
       "url": "product/group/{{ entity.id }}"

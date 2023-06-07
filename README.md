@@ -30,9 +30,9 @@ employee_token=....
 1. Collect the product data from Tripletex
    - What can be used as _id? How is that added to the entity? 
 2. Insert a new Tripletex product (you will need to repost and edit an entity to do this)
-   - How to construct a rest operation? How does the share entity need to be edited in order to provoke an insert? 
+   - How to construct a REST operation? How does the share entity need to be edited in order to provoke an insert? 
 3. Update the Tripletex product you inserted (you will need to repost and edit an entity to do this)
-   - How does a share entity need to be edited to provoke an update? 
+   - How does a share entity need to be edited to provoke an update? What happens in the share template before the actual update REST operation? 
 4. $last-modified is using \["now"\]. Use data from the incoming entity instead
    - What data exists in the entity that can be used to construct $last-modified?
       <details> 

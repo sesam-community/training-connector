@@ -37,15 +37,11 @@ employee_token=....
    - What data exists in the entity that can be used to construct $last-modified?
       <details> 
       <summary>HINT 1 </summary>
-        Tripletex has an array called "changes". 
+        Tripletex has an array called "changes". This can contain the events CREATE, UPDATE, or DELETE.
       </details>
       <details> 
       <summary>HINT 2 </summary>
-        This can contain the events CREATE and UPDATE.
-      </details>
-      <details> 
-      <summary>HINT 3 </summary>
-        $last-modified should be the data of the most recent change.
+        $last-modified should be the data of the most recent update or create in that array.
       </details>
 5. Add the project datatype
    - What strategies exist for adding a new datatype? 

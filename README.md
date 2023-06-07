@@ -32,7 +32,8 @@ employee_token=....
 2. Insert a new Tripletex product (you will need to repost and edit an entity to do this)
    - How to construct a REST operation? How does the share entity need to be edited in order to provoke an insert? 
 3. Update the Tripletex product you inserted (you will need to repost and edit an entity to do this)
-   - How does a share entity need to be edited to provoke an update? What happens in the share template before the actual update REST operation? 
+   - How does a share entity need to be edited to provoke an update? What happens in the share template before the actual update REST operation?
+   - The goal is to test the operation, not how the properties are built. Editing $based_on and $based_on_properties to include only 1 or 2 properties (instead of the whole entity) is a good way to get the comparison function to evaluate to update. 
 4. $last-modified is using \["now"\]. Use data from the incoming entity instead
    - What data exists in the entity that can be used to construct $last-modified?
       <details> 

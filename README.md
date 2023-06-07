@@ -18,6 +18,14 @@ training-connector/
 
 You should not change the json files within the templates folder locally. The `manifest.json` file you can change locally to reflect which datatypes you want generated in your Sesam subscription when doing your development. 
 
+## .authconfig
+tripletex uses the format:
+
+consumer_token=.....
+
+employee_token=....
+
+
 ## Exercises
 1. Collect the product data from Tripletex
 2. Insert a new Tripletex product (you will need to repost and edit an entity to do this)

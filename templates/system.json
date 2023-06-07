@@ -68,7 +68,14 @@
       "method": "DELETE",
       "url": "product/{{ entity.id }}"
     },
+    "product-insert": {
+      "method": "POST",
+      "payload-type": "json",
+      "payload_property": "value",
+      "url": "product"
+    },
     "product-list": {
+      "id_expression": "{{ id }}",
       "method": "GET",
       "next_page_link": "{{@ base_url @}}/v2/product?from={{ body.from + body.count }}",
       "next_page_termination_strategy": "empty-result",
@@ -76,9 +83,15 @@
       "url": "product?fields=*,changes"
     },
     "product-lookup": {
-      "method": "OPTIONS",
+      "method": "GET",
       "payload_property": "value",
       "url": "product/{{ entity.id }}?fields=*,changes"
+    },
+    "product-update": {
+      "method": "PUT",
+      "payload-type": "json",
+      "payload_property": "value",
+      "url": "product/{{ entity.id }}"
     },
     "productgroup-delete": {
       "method": "DELETE",

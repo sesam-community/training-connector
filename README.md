@@ -28,15 +28,35 @@ employee_token=....
 
 ## Exercises
 1. Collect the product data from Tripletex
+   - What can be used as _id? How is that added to the entity? 
 2. Insert a new Tripletex product (you will need to repost and edit an entity to do this)
+   - How to construct a rest operation? How does the share entity need to be edited in order to provoke an insert? 
 3. Update the Tripletex product you inserted (you will need to repost and edit an entity to do this)
+   - How does a share entity need to be edited to provoke an update? 
 4. $last-modified is using \["now"\]. Use data from the incoming entity instead
+   - What data exists in the entity that can be used to construct $last-modified?
+      <details> 
+      <summary>HINT 1 </summary>
+        Tripletex has an array called "changes". 
+      </details>
+      <details> 
+      <summary>HINT 2 </summary>
+        This can contain the events CREATE and UPDATE.
+      </details>
+      <details> 
+      <summary>HINT 3 </summary>
+        $last-modified should be the data of the most recent change.
+      </details>
 5. Add the project datatype
-   -HINT: can you reuse an existing template? 
+   - What strategies exist for adding a new datatype? 
+        <details> 
+        <summary>HINT </summary>
+          Can you reuse an existing template? 
+        </details> 
 
 ## Helpful Links and tips
 - [Tripletex API documentation](https://tripletex.no/v2-docs/)
-- [internal wiki for the connector-workflow](https://github.com/datanav/sesam-talk-config/wiki/Connector-Development-Pipeline)
+- [Internal wiki for the connector-workflow](https://github.com/datanav/sesam-talk-config/wiki/Connector-Development-Pipeline)
 - [Internal tripletex wiki](https://github.com/datanav/sesam-talk-config/wiki/Connectors:Tripletex)
   - "Older account, not used" is what we have been using for training. Otherwise create own account and populate with contact and product data.
 - [Connector Contract](https://docs.sesam.io/hub/documentation/data-synchronization/connectors/contract-connectors.html)

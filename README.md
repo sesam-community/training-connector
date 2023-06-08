@@ -52,6 +52,14 @@ employee_token=....
         <summary>HINT </summary>
           Can you reuse an existing template? 
         </details> 
+        <details> 
+        <summary>Look at me if this takes you more than 10 minutes </summary>
+           - Copy all the contact operations and change the word "contact" to "project"
+           - Sesam download (to save your changes)
+           - Add the "project" datatype to manifest.json. As a template use contact.json.
+           - Sesam upload
+           - Tada! 
+        </details> 
 
 ## Helpful Links and tips
 - [Tripletex API documentation](https://tripletex.no/v2-docs/)

@@ -28,6 +28,10 @@
     "productunit": {
       "label": "Product Unit",
       "template": "templates/customercategory.json"
+    },
+    "project": {
+      "label": "Project",
+      "template": "templates/product.json"
     }
   },
   "requires_service_api_access": true,

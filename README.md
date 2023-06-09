@@ -46,7 +46,7 @@ employee_token=....
       <summary>HINT 2 </summary>
         $last-modified should be the data of the most recent update or create in that array.
       </details>
-5. Add the project datatype
+5. Add the project datatype to the connector. It doesn't currently exist.
    - What strategies exist for adding a new datatype? 
         <details> 
         <summary>HINT </summary>

@@ -1,1 +1,184 @@
-{"dummy file because sesam py expects this to exist":":)"}
+{
+    "_id": "{{@ system @}}",
+    "authentication": "basic",
+    "operations": {
+      "contact-delete": {
+        "method": "DELETE",
+        "url": "contact/list?ids={{ entity.id }}"
+      },
+      "contact-insert": {
+        "method": "POST",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "contact"
+      },
+      "contact-list": {
+        "id_expression": "{{ id }}",
+        "method": "GET",
+        "next_page_link": "{{@ base_url @}}/v2/contact?from={{ body.from + body.count }}",
+        "next_page_termination_strategy": "empty-result",
+        "payload_property": "values",
+        "url": "contact?fields=*,changes"
+      },
+      "contact-lookup": {
+        "method": "GET",
+        "payload_property": "value",
+        "url": "contact/{{ entity.id }}?fields=*,changes"
+      },
+      "contact-update": {
+        "method": "PUT",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "contact/{{ entity.id }}"
+      },
+      "customercategory-delete": {
+        "method": "DELETE",
+        "url": "customer/category/{{ entity.id }}"
+      },
+      "customercategory-insert": {
+        "method": "POST",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "customer/category"
+      },
+      "customercategory-list": {
+        "id_expression": "{{ id }}",
+        "method": "GET",
+        "next_page_link": "{{@ base_url @}}/v2/customer/category?from={{ body.from + body.count }}",
+        "next_page_termination_strategy": "empty-result",
+        "payload_property": "values",
+        "url": "customer/category?fields=*,changes"
+      },
+      "customercategory-lookup": {
+        "method": "GET",
+        "payload_property": "value",
+        "url": "customer/category/{{ entity.id }}?fields=*,changes"
+      },
+      "customercategory-update": {
+        "method": "PUT",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "customer/category/{{ entity.id }}"
+      },
+      "employee-delete": {
+        "method": "DELETE",
+        "url": "employee/{{ entity.id }}"
+      },
+      "product-delete": {
+        "method": "DELETE",
+        "url": "product/{{ entity.id }}"
+      },
+      "product-list": {
+        "method": "GET",
+        "next_page_link": "{{@ base_url @}}/v2/product?from={{ body.from + body.count }}",
+        "next_page_termination_strategy": "empty-result",
+        "payload_property": "values",
+        "url": "product?fields=*,changes"
+      },
+      "product-lookup": {
+        "method": "OPTIONS",
+        "payload_property": "value",
+        "url": "product/{{ entity.id }}?fields=*,changes"
+      },
+      "product-update": {
+        "method": "PUT",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "product/{{ entity.id }}"
+      },
+      "productgroup-delete": {
+        "method": "DELETE",
+        "url": "product/group/{{ entity.id }}"
+      },
+      "productgroup-insert": {
+        "method": "POST",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "product/group"
+      },
+      "productgroup-list": {
+        "id_expression": "{{ id }}",
+        "method": "GET",
+        "next_page_link": "{{@ base_url @}}/v2/product/group?from={{ body.from + body.count }}",
+        "next_page_termination_strategy": "empty-result",
+        "payload_property": "values",
+        "url": "product/group?fields=*,changes"
+      },
+      "productgroup-lookup": {
+        "method": "GET",
+        "payload_property": "value",
+        "url": "product/group/{{ entity.id }}?fields=*,changes"
+      },
+      "productgroup-update": {
+        "method": "PUT",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "product/group/{{ entity.id }}"
+      },
+      "productgrouprelation-delete": {
+        "method": "DELETE",
+        "url": "product/groupRelation/{{ entity.id }}"
+      },
+      "productgrouprelation-insert": {
+        "method": "POST",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "product/groupRelation"
+      },
+      "productgrouprelation-list": {
+        "id_expression": "{{ id }}",
+        "method": "GET",
+        "next_page_link": "{{@ base_url @}}/v2/product/groupRelation?from={{ body.from + body.count }}",
+        "next_page_termination_strategy": "empty-result",
+        "payload_property": "values",
+        "url": "product/groupRelation?fields=*,changes"
+      },
+      "productgrouprelation-lookup": {
+        "method": "GET",
+        "payload_property": "value",
+        "url": "product/groupRelation/{{ entity.id }}?fields=*,changes"
+      },
+      "productgrouprelation-update": {
+        "method": "PUT",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "product/groupRelation/{{ entity.id }}"
+      },
+      "productunit-delete": {
+        "method": "DELETE",
+        "url": "product/unit/{{ entity.id }}"
+      },
+      "productunit-insert": {
+        "method": "POST",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "product/unit"
+      },
+      "productunit-list": {
+        "id_expression": "{{ id }}",
+        "method": "GET",
+        "next_page_link": "{{@ base_url @}}/v2/product/unit?from={{ body.from + body.count }}",
+        "next_page_termination_strategy": "empty-result",
+        "payload_property": "values",
+        "url": "product/unit?fields=*,changes"
+      },
+      "productunit-lookup": {
+        "method": "GET",
+        "payload_property": "value",
+        "url": "product/unit/{{ entity.id }}?fields=*,changes"
+      },
+      "productunit-update": {
+        "method": "PUT",
+        "payload-type": "json",
+        "payload_property": "value",
+        "url": "product/unit/{{ entity.id }}"
+      }
+    },
+    "password": "$SECRET(sessionToken)",
+    "rate_limiting_delay": 60,
+    "rate_limiting_retries": 3,
+    "type": "system:rest",
+    "url_pattern": "{{@ base_url @}}/v2/%s",
+    "username": "0",
+    "verify_ssl": true
+  }

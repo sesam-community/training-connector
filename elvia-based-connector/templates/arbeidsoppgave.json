@@ -1,8 +1,8 @@
-{
+[{
   "_id": "{{@ system @}}-{{@ datatype @}}-all",
   "namespaced_identifiers": false,
   "source": {
     "type": "http_endpoint"
   },
   "type": "pipe"
-}
+}]

@@ -69,7 +69,7 @@ A connector simulating IFS at Elvia. The http_endpoint simulates receiving data 
   "source_ref3": "1",
   "state": "Released",
   "task_seq": 90210,
-  "wo_no": 10Q18N1996Z,
+  "wo_no": "10Q18N1996Z",
   "work_type_id": "01VT-USA1776",
   "_id": "90210"
 }

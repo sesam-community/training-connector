@@ -1,0 +1,10 @@
+{
+  "additional_parameters": {},
+  "datatypes": {
+    "arbeidsoppgave": {
+      "label": "Arbeidsoppgave",
+      "template": "templates/arbeidsoppgave.json"
+    }
+  },
+  "system-template": "templates/system.json"
+}

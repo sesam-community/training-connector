@@ -1,5 +1,5 @@
 {
-  "_id": "xxxxxx-customer-transform",
+  "_id": "xxxxxx-customer-transformtraining",
   "type": "pipe",
   "source": {
     "type": "dataset",

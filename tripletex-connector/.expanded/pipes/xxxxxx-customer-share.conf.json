@@ -3,7 +3,7 @@
   "type": "pipe",
   "source": {
     "type": "dataset",
-    "dataset": "xxxxxx-customer-transform"
+    "dataset": "xxxxxx-customer-transformtraining"
   },
   "sink": {
     "deletion_tracking": false,

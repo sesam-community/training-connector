@@ -1,11 +1,11 @@
 {
-  "_id": "kafka-{{@ datatype @}}-enrich",
+  "_id": "push-{{@ datatype @}}-enrich",
   "namespaces": {
-    "identity": "kafka-company",
-    "property": "kafka-company"
+    "identity": "push-company",
+    "property": "push-company"
   },
   "source": {
-    "dataset": "kafka-company-collect",
+    "dataset": "push-company-collect",
     "type": "dataset"
   },
   "transform": {

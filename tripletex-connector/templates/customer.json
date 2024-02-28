@@ -22,7 +22,7 @@
     "transform": [
       {
         "properties": {
-          "primary_key": "id",
+          "primary_key": "<my-id>",
           "share_dataset": "{{@ system @}}-{{@ datatype @}}-share"
         },
         "template": "transform-collect-rest",
@@ -419,19 +419,16 @@
       "set_initial_offset": "onload"
     },
     "source": {
-      "dataset": "{{@ system @}}-{{@ datatype @}}-transform",
+      "dataset": "{{@ system @}}-{{@ datatype @}}-transformtraining",
       "type": "dataset"
     },
     "transform": [
       {
         "properties": {
           "client_side_patching": true,
-          "operation_delete": "{{@ datatype @}}-delete",
-          "operation_insert": "{{@ datatype @}}-insert",
-          "operation_lookup": "{{@ datatype @}}-lookup",
-          "operation_update": "{{@ datatype @}}-update",
-          "primary_key": "id",
-          "rest_system": "{{@ system @}}",
+          "operation_delete": "<my-operation>",
+          "primary_key": "<my-id>",
+          "rest_system": "<my-system>",
           "rewrite_rules_payload": {
             "rewrite_update_payload_after_patch": [
               [
@@ -450,6 +447,215 @@
         "type": "template"
       }
     ],
+    "type": "pipe"
+  },
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-transformtraining",
+    "source": {
+      "dataset": "{{@ system @}}-{{@ datatype @}}-transform-split",
+      "supports_signalling": false,
+      "type": "dataset"
+    },
+    "transform": {
+      "rules": {
+        "based-on": [
+          [
+            "copy",
+            "*",
+            [
+              "list",
+              "_*",
+              "$*"
+            ]
+          ]
+        ],
+        "default": [
+          [
+            "if",
+            [
+              "in",
+              "{{@ system @}}-{{@ datatype @}}",
+              [
+                "map",
+                [
+                  "ni-ns",
+                  "_."
+                ],
+                "_S.$ids"
+              ]
+            ],
+            [
+              "remove",
+              "$origin"
+            ],
+            [
+              "add",
+              "$origin",
+              "_T.$origin"
+            ]
+          ],
+          [
+            "copy",
+            "*",
+            [
+              "list",
+              "$origin",
+              "p:*",
+              "ps:P*",
+              "{{@ system @}}-{{@ datatype @}}:*"
+            ]
+          ],
+          [
+            "if",
+            [
+              "and",
+              [
+                "is-empty",
+                "_S.id"
+              ],
+              [
+                "is-empty",
+                "_S.$origin"
+              ]
+            ],
+            [
+              "add",
+              "$origin",
+              [
+                "ni",
+                "_S._id"
+              ]
+            ],
+            [
+              "copy",
+              "$origin"
+            ]
+          ],
+          [
+            "if",
+            [
+              "and",
+              [
+                "not",
+                "_S.$replaced"
+              ],
+              [
+                "eq",
+                [
+                  "ni-ns",
+                  "_S._id"
+                ],
+                "{{@ system @}}-{{@ datatype @}}"
+              ]
+            ],
+            [
+              [
+                "create",
+                [
+                  "apply",
+                  "emit",
+                  [
+                    "ni",
+                    "_S._id"
+                  ]
+                ]
+              ],
+              [
+                "discard"
+              ]
+            ],
+            [
+              "add",
+              "$based_on_properties",
+              [
+                "list",
+                "EmailAddress",
+                "Id",
+                "InvoiceEmailAddress",
+                "IsPerson",
+                "MailAddress.AddressLine1",
+                "MailAddress.AddressLine2",
+                "MailAddress.City",
+                "MailAddress.CountryCode",
+                "MailAddress.ZipCode",
+                "Name",
+                "OrganizationNumber",
+                "PhoneNumber",
+                "WebsiteUrl"
+              ]
+            ]
+          ]
+        ],
+        "emit": [
+          [
+            "add",
+            "_id",
+            [
+              "string",
+              "_S."
+            ]
+          ],
+          [
+            "add",
+            "$id",
+            [
+              "ni-id",
+              "_S."
+            ]
+          ],
+          [
+            "add",
+            "_deleted",
+            "_R._S._deleted"
+          ],
+          [
+            "merge",
+            "_R._T"
+          ],
+          [
+            "add",
+            "$based_on",
+            [
+              "first",
+              [
+                "map",
+                "_.ps:P144",
+                [
+                  "filter",
+                  [
+                    "eq",
+                    "_.ps:P248",
+                    "_S."
+                  ],
+                  "_R._S.p:P144"
+                ]
+              ]
+            ]
+          ],
+          [
+            "add",
+            "$based_on_properties",
+            [
+              "flatten",
+              [
+                "map",
+                "_.ps:P3158",
+                [
+                  "filter",
+                  [
+                    "eq",
+                    "_.ps:P248",
+                    "_S."
+                  ],
+                  "_R._S.p:P3158"
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "type": "dtl"
+    },
     "type": "pipe"
   }
 ]

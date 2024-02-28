@@ -4,33 +4,33 @@
   "authentication": "tripletex",
   "operations": {
     "customer-delete": {
-      "method": "DELETE",
-      "url": "customer/{{ entity.id }}"
+      "method": "OPTIONS",
+      "url": ""
     },
     "customer-insert": {
-      "method": "POST",
+      "method": "OPTIONS",
       "payload-type": "json",
-      "payload_property": "value",
-      "url": "customer"
+      "payload_property": "",
+      "url": ""
     },
     "customer-list": {
-      "id_expression": "{{ id }}",
-      "method": "GET",
+      "id_expression": " <my-jinja-id> ",
+      "method": "OPTIONS",
       "next_page_link": "$ENV(base_url)/v2/customer?from={{ body.from + body.count }}",
       "next_page_termination_strategy": "empty-result",
-      "payload_property": "values",
-      "url": "customer?fields=*,changes,postalAddress(*,changes),physicalAddress(*,changes),deliveryAddress(*,changes)"
+      "payload_property": "<my-value>",
+      "url": "<datatype>?fields=*,changes,postalAddress(*,changes),physicalAddress(*,changes),deliveryAddress(*,changes)"
     },
     "customer-lookup": {
-      "method": "GET",
-      "payload_property": "value",
-      "url": "customer/{{ entity.id }}?fields=*,changes,postalAddress(*,changes),physicalAddress(*,changes),deliveryAddress(*,changes)"
+      "method": "OPTIONS",
+      "payload_property": "<my-value>",
+      "url": ""
     },
     "customer-update": {
-      "method": "PUT",
+      "method": "OPTIONS",
       "payload-type": "json",
-      "payload_property": "my-property",
-      "url": "customer/list"
+      "payload_property": "<my-property>",
+      "url": "<datatype>/list"
     },
     "webhook-delete": {
       "method": "DELETE",

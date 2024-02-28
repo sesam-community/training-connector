@@ -1,0 +1,86 @@
+{
+  "_id": "xxxxxx-customer-transformtraining",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-customer-transform-split",
+    "supports_signalling": false
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["if",
+          ["in", "xxxxxx-customer",
+            ["map",
+              ["ni-ns", "_."], "_S.$ids"]
+          ],
+          ["remove", "$origin"],
+          ["add", "$origin", "_T.$origin"]
+        ],
+        ["copy", "*",
+          ["list", "$origin", "p:*", "ps:P*", "xxxxxx-customer:*"]
+        ],
+        ["if",
+          ["and",
+            ["is-empty", "_S.id"],
+            ["is-empty", "_S.$origin"]
+          ],
+          ["add", "$origin",
+            ["ni", "_S._id"]
+          ],
+          ["copy", "$origin"]
+        ],
+        ["if",
+          ["and",
+            ["not", "_S.$replaced"],
+            ["eq",
+              ["ni-ns", "_S._id"], "xxxxxx-customer"]
+          ],
+          [
+            ["create",
+              ["apply", "emit",
+                ["ni", "_S._id"]
+              ]
+            ],
+            ["discard"]
+          ],
+          ["add", "$based_on_properties",
+            ["list", "EmailAddress", "Id", "InvoiceEmailAddress", "IsPerson", "MailAddress.AddressLine1", "MailAddress.AddressLine2", "MailAddress.City", "MailAddress.CountryCode", "MailAddress.ZipCode", "Name", "OrganizationNumber", "PhoneNumber", "WebsiteUrl"]
+          ]
+        ]
+      ],
+      "based-on": [
+        ["copy", "*",
+          ["list", "_*", "$*"]
+        ]
+      ],
+      "emit": [
+        ["add", "_id",
+          ["string", "_S."]
+        ],
+        ["add", "$id",
+          ["ni-id", "_S."]
+        ],
+        ["add", "_deleted", "_R._S._deleted"],
+        ["merge", "_R._T"],
+        ["add", "$based_on",
+          ["first",
+            ["map", "_.ps:P144",
+              ["filter",
+                ["eq", "_.ps:P248", "_S."], "_R._S.p:P144"]
+            ]
+          ]
+        ],
+        ["add", "$based_on_properties",
+          ["flatten",
+            ["map", "_.ps:P3158",
+              ["filter",
+                ["eq", "_.ps:P248", "_S."], "_R._S.p:P3158"]
+            ]
+          ]
+        ]
+      ]
+    }
+  }
+}

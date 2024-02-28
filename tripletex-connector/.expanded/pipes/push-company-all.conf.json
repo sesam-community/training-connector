@@ -1,5 +1,5 @@
 {
-  "_id": "kafka-company-all",
+  "_id": "push-company-all",
   "type": "pipe",
   "source": {
     "type": "http_endpoint"

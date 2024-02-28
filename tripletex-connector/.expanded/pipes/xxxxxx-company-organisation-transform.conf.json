@@ -1,9 +1,9 @@
 {
-  "_id": "xxxxxx-customer-transform",
+  "_id": "xxxxxx-company-organisation-transform",
   "type": "pipe",
   "source": {
     "type": "dataset",
-    "dataset": "xxxxxx-customer-collect",
+    "dataset": "xxxxxx-company-organisation-collect",
     "supports_signalling": false
   },
   "transform": {

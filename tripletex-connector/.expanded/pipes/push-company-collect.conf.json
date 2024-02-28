@@ -1,0 +1,8 @@
+{
+  "_id": "push-company-collect",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "push-company-all"
+  }
+}

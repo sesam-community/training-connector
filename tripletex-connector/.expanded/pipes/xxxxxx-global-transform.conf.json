@@ -1,9 +1,9 @@
 {
-  "_id": "xxxxxx-customer-transform",
+  "_id": "xxxxxx-global-transform",
   "type": "pipe",
   "source": {
     "type": "dataset",
-    "dataset": "xxxxxx-customer-collect",
+    "dataset": "xxxxxx-global-collect",
     "supports_signalling": false
   },
   "transform": {

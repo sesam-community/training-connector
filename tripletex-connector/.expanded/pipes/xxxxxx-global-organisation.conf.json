@@ -3,10 +3,7 @@
   "type": "pipe",
   "source": {
     "type": "merge",
-    "datasets": ["kafka-company-organisation-enrich kafka-organisation-enrich", "xxxxxx-customer-organisation-enrich xxxxxx-customer-enrich"],
-    "equality_sets": [
-      ["xxxxxx-customer-enrich.$ids", "xxxxxx-customer-enrich.ps:P170", "kafka-organisation-enrich.$ids", "kafka-organisation-enrich.ps:P170"]
-    ],
+    "datasets": ["push-company-organisation-enrich push-organisation-enrich", "xxxxxx-customer-organisation-enrich xxxxxx-customer-enrich"],
     "identity": "first",
     "strategy": "compact",
     "version": 2

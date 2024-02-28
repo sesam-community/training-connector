@@ -3,7 +3,7 @@
   "type": "pipe",
   "source": {
     "type": "dataset",
-    "dataset": "xxxxxx-customer-transform"
+    "dataset": "xxxxxx-customer-transformtraining"
   },
   "sink": {
     "deletion_tracking": false,
@@ -13,12 +13,9 @@
     "type": "template",
     "properties": {
       "client_side_patching": true,
-      "operation_delete": "customer-delete",
-      "operation_insert": "customer-insert",
-      "operation_lookup": "customer-lookup",
-      "operation_update": "customer-update",
-      "primary_key": "id",
-      "rest_system": "xxxxxx",
+      "operation_delete": "<my-operation>",
+      "primary_key": "<my-id>",
+      "rest_system": "<my-system>",
       "rewrite_rules_payload": {
         "rewrite_update_payload_after_patch": [
           ["add", "$payload",

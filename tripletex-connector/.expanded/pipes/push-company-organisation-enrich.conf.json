@@ -1,9 +1,9 @@
 {
-  "_id": "kafka-company-organisation-enrich",
+  "_id": "push-company-organisation-enrich",
   "type": "pipe",
   "source": {
     "type": "dataset",
-    "dataset": "kafka-company-collect"
+    "dataset": "push-company-collect"
   },
   "transform": {
     "type": "dtl",
@@ -140,7 +140,7 @@
     }
   },
   "namespaces": {
-    "identity": "kafka-company",
-    "property": "kafka-company"
+    "identity": "push-company",
+    "property": "push-company"
   }
 }

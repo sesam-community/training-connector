@@ -1,8 +1,0 @@
-{
-  "_id": "kafka-company-collect",
-  "type": "pipe",
-  "source": {
-    "type": "dataset",
-    "dataset": "kafka-company-all"
-  }
-}

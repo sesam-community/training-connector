@@ -1,6 +1,6 @@
 [
   {
-    "_id": "kafka-{{@ datatype @}}-all",
+    "_id": "push-{{@ datatype @}}-all",
     "namespaced_identifiers": false,
     "source": {
       "type": "http_endpoint"
@@ -8,9 +8,9 @@
     "type": "pipe"
   },
   {
-    "_id": "kafka-{{@ datatype @}}-collect",
+    "_id": "push-{{@ datatype @}}-collect",
     "source": {
-      "dataset": "kafka-{{@ datatype @}}-all",
+      "dataset": "push-{{@ datatype @}}-all",
       "type": "dataset"
     },
     "type": "pipe"

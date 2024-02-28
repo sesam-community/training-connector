@@ -32,6 +32,8 @@ This datatype (**company**) for this system (**push**) is read-only, so no colle
 ## Step 4: Finish the insert part of the share template for **xxxxxx-customer-share**
 There is data in the share template and the system (**xxxxxx**) that needs to be filled in
 
+Tripletex API documentation is here: https://tripletex.no/v2-docs/#/
+
 ## Step 5: Collect the newly inserted customer back in your collect pipes
 You will need to set the ```primary_key``` variable in the collect template.
 

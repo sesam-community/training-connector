@@ -27,12 +27,13 @@ The entity (entities) you push should have the following general structure:
 ```
 
 ## Step 3: Set up a push-company-collect endpoint
-This specific datatype (**company**) for this system (**push**) is read-only, so no collect template is necessary. 
+This datatype (**company**) for this system (**push**) is read-only, so no collect template is necessary. 
 
 ## Step 4: Finish the insert part of the share template for **xxxxxx-customer-share**
-There are both data in the actual share template, but also the system (**xxxxxx**) that needs to be filled in
+There is data in the share template and the system (**xxxxxx**) that needs to be filled in
 
 ## Step 5: Collect the newly inserted customer back in your collect pipes
+You will need to set the ```primary_key``` variable in the collect template.
 
 ## Step 6: Merge entities
 Make sure the original entity and the newly inserted entity merge in **xxxxxx-global-organisation**. Equality sets should be used. 
@@ -40,6 +41,6 @@ Make sure the original entity and the newly inserted entity merge in **xxxxxx-gl
 Tip: Look at the *$original_entity* property in your new entity in the sink dataset of the **xxxxxx-customer-organisation-enrich** pipe
 
 ## Step 7: Finish the update part of the share template for **xxxxxx-customer-share**
-There are both data in the actual share template, but also the system (**xxxxxx**) that needs to be filled in
+There is data in the share template and the system (**xxxxxx**) that needs to be filled in
 
 ## Step 8: Play around

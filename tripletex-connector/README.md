@@ -14,7 +14,7 @@ Use sesam-py to upload the connector skeleton to your local dev node. In additio
 To push data to the http_endpoint source you need to define the correct url: ....receivers/<pipe-name>/entities
 
 The entity (entities) you push should have the following general structure:
-
+```json
 [
     {
         "_id": "90213",
@@ -25,6 +25,7 @@ The entity (entities) you push should have the following general structure:
         "website": "www.kafkacompany.com"
     }
 ]
+```
 
 To enable webhooks you must ensure that the service_url environment variable is set in your metadata config of your subscription. The service_url should look like so:
 

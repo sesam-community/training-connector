@@ -1,0 +1,80 @@
+{
+  "_id": "xxxxxx-customer-collect",
+  "type": "pipe",
+  "source": {
+    "type": "merge_datasets",
+    "datasets": ["xxxxxx-customer-all", "xxxxxx-customer-event2"]
+  },
+  "transform": [{
+    "type": "template",
+    "properties": {
+      "primary_key": "id",
+      "share_dataset": "xxxxxx-customer-share"
+    },
+    "template": "transform-collect-rest"
+  }, {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*",
+          ["list", "physicalAddress", "postalAddress", "deliveryAddress"]
+        ],
+        ["comment", "adding physicalAddress and it's updated timestamp but removing the changes field"],
+        ["add", "physicalAddress",
+          ["apply", "addresses", "_S.physicalAddress"]
+        ],
+        ["merge-union",
+          ["max", "_.",
+            ["apply", "last-modified", "_S.physicalAddress.changes"]
+          ]
+        ],
+        ["comment", "adding postalAddress and it's updated timestamp but removing the changes field"],
+        ["add", "postalAddress",
+          ["apply", "addresses", "_S.postalAddress"]
+        ],
+        ["merge-union",
+          ["max", "_.",
+            ["apply", "last-modified", "_S.postalAddress.changes"]
+          ]
+        ],
+        ["comment", "adding deliveryAddress and it's updated timestamp but removing the changes field"],
+        ["add", "deliveryAddress",
+          ["apply", "addresses", "_S.deliveryAddress"]
+        ],
+        ["merge-union",
+          ["max", "_.",
+            ["apply", "last-modified", "_S.deliveryAddress.changes"]
+          ]
+        ],
+        ["merge-union",
+          ["max", "_.",
+            ["apply", "last-modified", "_S.changes"]
+          ]
+        ],
+        ["comment", "overwriting the $last-modified array with the highest timestamp in the array"],
+        ["add", "$last-modified",
+          ["max", "_T.$last-modified"]
+        ],
+        ["add", "changes",
+          ["filter",
+            ["eq", "_.changeType", "CREATE"], "_S.changes"]
+        ]
+      ],
+      "addresses": [
+        ["copy", "*", "changes"]
+      ],
+      "last-modified": [
+        ["filter",
+          ["in", "_S.changeType",
+            ["list", "UPDATE", "CREATE"]
+          ]
+        ],
+        ["add", "$last-modified",
+          ["datetime-parse", "%Y-%m-%dT%H:%M:%S%z", "_S.timestamp"]
+        ]
+      ]
+    }
+  }],
+  "exclude_completeness": ["xxxxxx-customer-event2", "xxxxxx-customer-share"],
+  "namespaced_identifiers": false
+}

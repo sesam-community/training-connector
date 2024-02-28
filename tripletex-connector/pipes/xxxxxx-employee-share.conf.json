@@ -1,0 +1,36 @@
+{
+  "_id": "xxxxxx-employee-share",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-employee-transform"
+  },
+  "sink": {
+    "deletion_tracking": false,
+    "set_initial_offset": "onload"
+  },
+  "transform": {
+    "type": "template",
+    "properties": {
+      "operation_delete_properties": {
+        "datatype": "employee"
+      },
+      "operation_insert_properties": {
+        "datatype": "employee"
+      },
+      "operation_lookup_properties": {
+        "datatype": "employee"
+      },
+      "operation_update_properties": {
+        "datatype": "employee"
+      },
+      "primary_key": "id",
+      "rest_system": "xxxxxx",
+      "share_dataset": "xxxxxx-employee-share"
+    },
+    "template": "transform-share-rest"
+  },
+  "batch_size": 1,
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

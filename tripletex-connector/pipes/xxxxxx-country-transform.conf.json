@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-country-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-country-collect",
+    "supports_signalling": false
+  }
+}

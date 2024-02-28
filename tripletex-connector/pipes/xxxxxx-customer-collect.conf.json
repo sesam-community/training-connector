@@ -1,0 +1,18 @@
+{
+  "_id": "xxxxxx-customer-collect",
+  "type": "pipe",
+  "source": {
+    "type": "merge_datasets",
+    "datasets": ["xxxxxx-customer-all", "xxxxxx-customer-event-processed"]
+  },
+  "transform": {
+    "type": "template",
+    "properties": {
+      "primary_key": "id",
+      "share_dataset": "xxxxxx-customer-share"
+    },
+    "template": "transform-collect-rest"
+  },
+  "exclude_completeness": ["xxxxxx-customer-event-processed", "xxxxxx-customer-share"],
+  "namespaced_identifiers": false
+}

@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-contact-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-contact-collect",
+    "supports_signalling": false
+  }
+}

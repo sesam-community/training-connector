@@ -1,0 +1,39 @@
+{
+  "_id": "xxxxxx-country-register-webhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "country-create",
+      "_updated": 0,
+      "properties": {
+        "event": "country.create",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-country-event/entities"
+      }
+    }, {
+      "_id": "country-update",
+      "_updated": 1,
+      "properties": {
+        "event": "country.update",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-country-event/entities"
+      }
+    }, {
+      "_id": "country-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "country.delete",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-country-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "transform": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "side_effects": true
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

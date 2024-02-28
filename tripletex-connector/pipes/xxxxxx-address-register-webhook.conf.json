@@ -1,0 +1,39 @@
+{
+  "_id": "xxxxxx-address-register-webhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "address-create",
+      "_updated": 0,
+      "properties": {
+        "event": "address.create",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-address-event/entities"
+      }
+    }, {
+      "_id": "address-update",
+      "_updated": 1,
+      "properties": {
+        "event": "address.update",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-address-event/entities"
+      }
+    }, {
+      "_id": "address-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "address.delete",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-address-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "transform": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "side_effects": true
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

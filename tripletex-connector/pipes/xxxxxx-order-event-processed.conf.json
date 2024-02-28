@@ -1,0 +1,21 @@
+{
+  "_id": "xxxxxx-order-event-processed",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-order-event"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["if",
+          ["eq", "_S.event", "order.delete"],
+          ["add", "_deleted", true]
+        ],
+        ["merge", "_S.value"]
+      ]
+    }
+  },
+  "namespaced_identifiers": false
+}

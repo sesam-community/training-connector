@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-vattype-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-vattype-collect",
+    "supports_signalling": false
+  }
+}

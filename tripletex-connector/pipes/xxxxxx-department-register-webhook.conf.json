@@ -1,0 +1,39 @@
+{
+  "_id": "xxxxxx-department-register-webhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "department-create",
+      "_updated": 0,
+      "properties": {
+        "event": "department.create",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-department-event/entities"
+      }
+    }, {
+      "_id": "department-update",
+      "_updated": 1,
+      "properties": {
+        "event": "department.update",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-department-event/entities"
+      }
+    }, {
+      "_id": "department-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "department.delete",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-department-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "transform": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "side_effects": true
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

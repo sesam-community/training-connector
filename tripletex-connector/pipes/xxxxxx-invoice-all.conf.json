@@ -1,0 +1,26 @@
+{
+  "_id": "xxxxxx-invoice-all",
+  "type": "pipe",
+  "source": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "list",
+    "operations": {
+      "list": {
+        "id_expression": "{{ id }}",
+        "method": "GET",
+        "next_page_link": "$ENV(base_url)/v2/{{ properties.datatype }}?from={{ body.from + body.count }}&invoiceDateFrom={{ properties.DateFrom }}&invoiceDateTo={{ properties.DateTo }}",
+        "next_page_termination_strategy": "empty-result",
+        "payload_property": "values",
+        "url": "{{ properties.datatype }}?invoiceDateFrom={{ properties.DateFrom }}&invoiceDateTo={{ properties.DateTo }}"
+      }
+    },
+    "properties": {
+      "DateFrom": "1970-01-01",
+      "DateTo": "2999-01-01",
+      "datatype": "invoice"
+    }
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'order' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "xxxxxx-project-collect",
+  "type": "pipe",
+  "source": {
+    "type": "merge_datasets",
+    "datasets": ["xxxxxx-project-all", "xxxxxx-project-event-processed"]
+  },
+  "transform": {
+    "type": "template",
+    "properties": {
+      "primary_key": "id",
+      "share_dataset": "xxxxxx-project-share"
+    },
+    "template": "transform-collect-rest"
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "exclude_completeness": ["xxxxxx-project-event-processed", "xxxxxx-project-share"],
+  "namespaced_identifiers": false
+}

@@ -1,0 +1,38 @@
+{
+  "_id": "xxxxxx-order-register-webhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "order-create",
+      "_updated": 0,
+      "properties": {
+        "event": "order.create",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-order-event/entities"
+      }
+    }, {
+      "_id": "order-update",
+      "_updated": 1,
+      "properties": {
+        "event": "order.update",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-order-event/entities"
+      }
+    }, {
+      "_id": "order-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "order.delete",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-order-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "transform": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "side_effects": true
+  },
+  "namespaced_identifiers": false
+}

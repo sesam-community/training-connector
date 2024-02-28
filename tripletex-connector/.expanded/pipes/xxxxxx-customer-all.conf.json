@@ -1,0 +1,10 @@
+{
+  "_id": "xxxxxx-customer-all",
+  "type": "pipe",
+  "source": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "customer-list"
+  },
+  "namespaced_identifiers": false
+}

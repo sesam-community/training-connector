@@ -1,0 +1,25 @@
+{
+  "_id": "xxxxxx-order-all",
+  "type": "pipe",
+  "source": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "list",
+    "operations": {
+      "list": {
+        "id_expression": "{{ id }}",
+        "method": "GET",
+        "next_page_link": "$ENV(base_url)/v2/{{ properties.datatype }}?from={{ body.from + body.count }}&orderDateFrom={{ properties.DateFrom }}&orderDateTo={{ properties.DateTo }}",
+        "next_page_termination_strategy": "empty-result",
+        "payload_property": "values",
+        "url": "{{ properties.datatype }}?orderDateFrom={{ properties.DateFrom }}&orderDateTo={{ properties.DateTo }}"
+      }
+    },
+    "properties": {
+      "DateFrom": "1970-01-01",
+      "DateTo": "2999-01-01",
+      "datatype": "order"
+    }
+  },
+  "namespaced_identifiers": false
+}

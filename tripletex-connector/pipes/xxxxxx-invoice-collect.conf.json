@@ -1,0 +1,10 @@
+{
+  "_id": "xxxxxx-invoice-collect",
+  "type": "pipe",
+  "source": {
+    "type": "merge_datasets",
+    "datasets": ["xxxxxx-invoice-all", "xxxxxx-invoice-event-processed"]
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'order' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

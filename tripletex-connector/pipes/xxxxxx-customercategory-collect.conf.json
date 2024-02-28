@@ -1,0 +1,13 @@
+{
+  "_id": "xxxxxx-customercategory-collect",
+  "type": "pipe",
+  "source": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "list",
+    "properties": {
+      "datatype": "customer/category"
+    }
+  },
+  "namespaced_identifiers": false
+}

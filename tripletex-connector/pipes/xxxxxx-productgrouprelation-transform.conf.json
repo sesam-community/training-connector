@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-productgrouprelation-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-productgrouprelation-collect",
+    "supports_signalling": false
+  }
+}

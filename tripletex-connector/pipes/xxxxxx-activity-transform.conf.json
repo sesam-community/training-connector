@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-activity-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-activity-collect",
+    "supports_signalling": false
+  }
+}

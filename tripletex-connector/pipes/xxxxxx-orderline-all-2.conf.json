@@ -1,0 +1,12 @@
+{
+  "_id": "xxxxxx-orderline-all-2",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-orderline-all"
+  },
+  "transform": [{
+    "type": "emit_children"
+  }],
+  "namespaced_identifiers": false
+}

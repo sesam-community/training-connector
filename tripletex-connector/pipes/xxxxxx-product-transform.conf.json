@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-product-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-product-collect",
+    "supports_signalling": false
+  }
+}

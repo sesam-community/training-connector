@@ -1,0 +1,24 @@
+{
+  "_id": "xxxxxx-address-event",
+  "type": "pipe",
+  "source": {
+    "type": "http_endpoint"
+  },
+  "transform": [{
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"],
+        ["add", "_id",
+          ["string", "_S.id"]
+        ]
+      ]
+    }
+  }],
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "compaction": {
+    "keep_versions": 0,
+    "time_threshold_hours": 168
+  },
+  "namespaced_identifiers": false
+}

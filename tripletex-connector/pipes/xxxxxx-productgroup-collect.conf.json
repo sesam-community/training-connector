@@ -1,0 +1,13 @@
+{
+  "_id": "xxxxxx-productgroup-collect",
+  "type": "pipe",
+  "source": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "list",
+    "properties": {
+      "datatype": "product/group"
+    }
+  },
+  "namespaced_identifiers": false
+}

@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-currency-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-currency-collect",
+    "supports_signalling": false
+  }
+}

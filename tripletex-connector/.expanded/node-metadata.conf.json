@@ -1,0 +1,7 @@
+{
+  "_id": "node",
+  "type": "metadata",
+  "task_manager": {
+    "disable_user_pipes": true
+  }
+}

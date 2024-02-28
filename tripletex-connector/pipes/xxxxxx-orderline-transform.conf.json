@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-orderline-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-orderline-collect",
+    "supports_signalling": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "_id": "xxxxxx-webhook-collect",
+  "type": "pipe",
+  "source": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-list"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"],
+        ["add", "$healthy",
+          ["if",
+            ["eq", "_S.status", "ACTIVE"], true, false]
+        ]
+      ]
+    }
+  },
+  "namespaced_identifiers": false
+}

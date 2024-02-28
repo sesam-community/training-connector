@@ -1,0 +1,27 @@
+{
+  "_id": "xxxxxx-orderline-all",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-order-collect"
+  },
+  "transform": [{
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["create-child",
+          ["apply", "create_rows", "_S.orderLines"]
+        ]
+      ],
+      "create_rows": [
+        ["add", "_id",
+          ["string", "_S.id"]
+        ],
+        ["add", "id", "_S.id"],
+        ["add", "$original_id", "_R._S._id"],
+        ["add", "version", "_P._S.version"]
+      ]
+    }
+  }],
+  "namespaced_identifiers": false
+}

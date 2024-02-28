@@ -1,0 +1,39 @@
+{
+  "_id": "xxxxxx-invoice-register-webhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "invoice-create",
+      "_updated": 0,
+      "properties": {
+        "event": "invoice.create",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-invoice-event/entities"
+      }
+    }, {
+      "_id": "invoice-update",
+      "_updated": 1,
+      "properties": {
+        "event": "invoice.update",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-invoice-event/entities"
+      }
+    }, {
+      "_id": "invoice-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "invoice.delete",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-invoice-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "transform": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "side_effects": true
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'order' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

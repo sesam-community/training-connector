@@ -1,0 +1,19 @@
+{
+  "_id": "xxxxxx-employee-collect",
+  "type": "pipe",
+  "source": {
+    "type": "merge_datasets",
+    "datasets": ["xxxxxx-employee-all", "xxxxxx-employee-event-processed"]
+  },
+  "transform": {
+    "type": "template",
+    "properties": {
+      "primary_key": "id",
+      "share_dataset": "xxxxxx-employee-share"
+    },
+    "template": "transform-collect-rest"
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "exclude_completeness": ["xxxxxx-employee-event-processed", "xxxxxx-employee-share"],
+  "namespaced_identifiers": false
+}

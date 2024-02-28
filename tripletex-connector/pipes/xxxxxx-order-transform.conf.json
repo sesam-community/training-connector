@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-order-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-order-collect",
+    "supports_signalling": false
+  }
+}

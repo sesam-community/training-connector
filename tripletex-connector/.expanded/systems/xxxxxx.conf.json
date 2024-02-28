@@ -1,0 +1,75 @@
+{
+  "_id": "xxxxxx",
+  "type": "system:rest",
+  "authentication": "tripletex",
+  "operations": {
+    "customer-delete": {
+      "method": "DELETE",
+      "url": "customer/{{ entity.id }}"
+    },
+    "customer-insert": {
+      "method": "POST",
+      "payload-type": "json",
+      "payload_property": "value",
+      "url": "customer"
+    },
+    "customer-list": {
+      "id_expression": "{{ id }}",
+      "method": "GET",
+      "next_page_link": "$ENV(base_url)/v2/customer?from={{ body.from + body.count }}",
+      "next_page_termination_strategy": "empty-result",
+      "payload_property": "values",
+      "url": "customer?fields=*,changes,postalAddress(*,changes),physicalAddress(*,changes),deliveryAddress(*,changes)"
+    },
+    "customer-lookup": {
+      "method": "GET",
+      "payload_property": "value",
+      "url": "customer/{{ entity.id }}?fields=*,changes,postalAddress(*,changes),physicalAddress(*,changes),deliveryAddress(*,changes)"
+    },
+    "customer-update": {
+      "method": "PUT",
+      "payload-type": "json",
+      "payload_property": "my-property",
+      "url": "customer/list"
+    },
+    "webhook-delete": {
+      "method": "DELETE",
+      "payload-type": "json",
+      "url": "event/subscription/{{ entity['id'] }}"
+    },
+    "webhook-insert": {
+      "method": "POST",
+      "payload": {
+        "authHeaderName": "X-Sesam-Authorization",
+        "authHeaderValue": "$SECRET(webhook_secret)",
+        "event": "{{ properties.event }}",
+        "fields": "{{ properties.fields }}",
+        "targetUrl": "{{ properties.targetUrl }}"
+      },
+      "payload-type": "json",
+      "url": "event/subscription"
+    },
+    "webhook-list": {
+      "id_expression": "{{ id }}",
+      "method": "GET",
+      "next_page_link": "$ENV(base_url)/v2/event/subscription?from={{ body.from + body.count }}",
+      "next_page_termination_strategy": "empty-result",
+      "payload_property": "values",
+      "url": "event/subscription"
+    },
+    "webhook-lookup": {
+      "method": "GET",
+      "payload-type": "json",
+      "url": "event/subscription/{{ entity['id'] }}"
+    }
+  },
+  "rate_limiting_delay": 60,
+  "rate_limiting_retries": 3,
+  "tripletex": {
+    "consumer_token": "$SECRET(consumer_token)",
+    "employee_token": "$SECRET(employee_token)",
+    "token_url": "$ENV(base_url)/v2/token/session/:create"
+  },
+  "url_pattern": "$ENV(base_url)/v2/%s",
+  "verify_ssl": true
+}

@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-department-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-department-collect",
+    "supports_signalling": false
+  }
+}

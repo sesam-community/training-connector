@@ -1,0 +1,39 @@
+{
+  "_id": "xxxxxx-employee-register-webhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "employee-create",
+      "_updated": 0,
+      "properties": {
+        "event": "employee.create",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-employee-event/entities"
+      }
+    }, {
+      "_id": "employee-update",
+      "_updated": 1,
+      "properties": {
+        "event": "employee.update",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-employee-event/entities"
+      }
+    }, {
+      "_id": "employee-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "employee.delete",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-employee-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "transform": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "side_effects": true
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

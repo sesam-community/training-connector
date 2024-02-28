@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-projectcategory-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-projectcategory-collect",
+    "supports_signalling": false
+  }
+}

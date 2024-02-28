@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-employee-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-employee-collect",
+    "supports_signalling": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "_id": "xxxxxx-orderline-collect",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-orderline-all-2"
+  },
+  "transform": [{
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["filter",
+          ["neq", "_S._deleted", true]
+        ],
+        ["copy", "*"],
+        ["add", "properties",
+          ["dict", "datatype", "order/orderline"]
+        ],
+        ["add", "entity",
+          ["dict", "id", "_S.id"]
+        ]
+      ]
+    }
+  }, {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "lookup",
+    "replace_entity": true,
+    "side_effects": false
+  }, {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["comment", "TODO should use id-expression and payload-property in rest transform"],
+        ["add", "_id",
+          ["string", "_S.value.id"]
+        ],
+        ["merge", "_S.value"]
+      ]
+    }
+  }],
+  "namespaced_identifiers": false
+}

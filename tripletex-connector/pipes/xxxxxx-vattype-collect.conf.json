@@ -1,0 +1,13 @@
+{
+  "_id": "xxxxxx-vattype-collect",
+  "type": "pipe",
+  "source": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "list",
+    "properties": {
+      "datatype": "ledger/vatType"
+    }
+  },
+  "namespaced_identifiers": false
+}

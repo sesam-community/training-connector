@@ -1,0 +1,6 @@
+﻿{
+  "base_url": "https://api.tripletex.io",
+  "node-env": "test",
+  "service_url": "",
+  "token_url": "https://api.tripletex.io/v2/token/session/:create"
+}

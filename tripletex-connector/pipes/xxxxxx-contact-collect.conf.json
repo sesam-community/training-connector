@@ -1,0 +1,19 @@
+{
+  "_id": "xxxxxx-contact-collect",
+  "type": "pipe",
+  "source": {
+    "type": "merge_datasets",
+    "datasets": ["xxxxxx-contact-all", "xxxxxx-contact-event-processed"]
+  },
+  "transform": {
+    "type": "template",
+    "properties": {
+      "primary_key": "id",
+      "share_dataset": "xxxxxx-contact-share"
+    },
+    "template": "transform-collect-rest"
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "exclude_completeness": ["xxxxxx-contact-event-processed", "xxxxxx-contact-share"],
+  "namespaced_identifiers": false
+}

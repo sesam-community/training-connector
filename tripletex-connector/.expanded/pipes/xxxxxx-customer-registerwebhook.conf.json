@@ -1,0 +1,97 @@
+{
+  "_id": "xxxxxx-customer-registerwebhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "customer-create",
+      "_updated": 0,
+      "properties": {
+        "event": "customer.create",
+        "fields": "*,changes,postalAddress(*,changes),physicalAddress(*,changes),deliveryAddress(*,changes)",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-customer-event/entities"
+      }
+    }, {
+      "_id": "customer-update",
+      "_updated": 1,
+      "properties": {
+        "event": "customer.update",
+        "fields": "*,changes,postalAddress(*,changes),physicalAddress(*,changes),deliveryAddress(*,changes)",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-customer-event/entities"
+      }
+    }, {
+      "_id": "customer-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "customer.delete",
+        "fields": "*,changes,postalAddress(*,changes),physicalAddress(*,changes),deliveryAddress(*,changes)",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-customer-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "sink": {
+    "deletion_tracking": false,
+    "set_initial_offset": "onload"
+  },
+  "transform": [{
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "properties"],
+        ["add", "id",
+          ["first",
+            ["hops", {
+              "datasets": ["xxxxxx-customer-registerwebhook sink"],
+              "where": [
+                ["eq", "_S._id", "sink._id"]
+              ],
+              "return": ["first", "sink.insert_response.value.id"]
+            }]
+          ]
+        ],
+        ["add", "$operation",
+          ["if",
+            ["is-not-null", "_T.id"], "lookup", "insert"]
+        ]
+      ]
+    }
+  }, {
+    "type": "rest",
+    "system": "xxxxxx",
+    "allowed_status_codes": "200,404",
+    "operation": "webhook-lookup",
+    "replace_entity": false,
+    "response_property": "lookup_response",
+    "response_status_property": "lookup_status_code",
+    "side_effects": false,
+    "trigger_on": {
+      "key": "$operation",
+      "value": "lookup"
+    }
+  }, {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"],
+        ["comment", "TODO: we should compare the state of the actual object vs our desired state."],
+        ["discard",
+          ["or",
+            ["eq", 404, "_T.lookup_status_code"],
+            ["eq", "_S.$operation", "insert"]
+          ]
+        ]
+      ]
+    }
+  }, {
+    "type": "rest",
+    "system": "xxxxxx",
+    "allowed_status_codes": "200,201",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "response_property": "insert_response",
+    "response_status_property": "insert_status_code",
+    "side_effects": true
+  }],
+  "namespaced_identifiers": false
+}

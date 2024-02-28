@@ -1,0 +1,35 @@
+{
+  "_id": "xxxxxx-webhook-wipe",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-webhook-collect"
+  },
+  "transform": [{
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"],
+        ["comment", "We only delete the webhooks that have targetUrl pointing to our service_url - i.e. the ones we created."],
+        ["discard",
+          ["matches", "$ENV(service_url)*", "_S.targetUrl"]
+        ]
+      ]
+    }
+  }, {
+    "type": "rest",
+    "system": "xxxxxx",
+    "trace": true,
+    "operation": "webhook-delete",
+    "response_status_property": "status_code",
+    "trigger_on": {
+      "key": "_deleted",
+      "value": false
+    }
+  }],
+  "pump": {
+    "mode": "manual"
+  },
+  "comment": "Used to delete all the webhooks.",
+  "namespaced_identifiers": false
+}

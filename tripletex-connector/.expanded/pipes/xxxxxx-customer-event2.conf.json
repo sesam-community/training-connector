@@ -1,0 +1,24 @@
+{
+  "_id": "xxxxxx-customer-event2",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-customer-event"
+  },
+  "sink": {
+    "set_initial_offset": "onload"
+  },
+  "transform": {
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["if",
+          ["eq", "_S.event", "customer.delete"],
+          ["add", "_deleted", true]
+        ],
+        ["merge", "_S.value"]
+      ]
+    }
+  },
+  "namespaced_identifiers": false
+}

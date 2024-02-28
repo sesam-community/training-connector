@@ -1,0 +1,13 @@
+{
+  "_id": "xxxxxx-projectcategory-collect",
+  "type": "pipe",
+  "source": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "list",
+    "properties": {
+      "datatype": "project/category"
+    }
+  },
+  "namespaced_identifiers": false
+}

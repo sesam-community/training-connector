@@ -1,0 +1,31 @@
+{
+  "_id": "xxxxxx-customer-event",
+  "type": "pipe",
+  "source": {
+    "type": "http_endpoint",
+    "system": "xxxxxx",
+    "validation_expression": "{% if request_headers['X-Sesam-Authorization'] == secret('webhook_secret') %}{% else %}FAIL!{% endif %}"
+  },
+  "transform": [{
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"],
+        ["add", "_id",
+          ["string", "_S.id"]
+        ]
+      ]
+    }
+  }],
+  "compaction": {
+    "keep_versions": 0,
+    "time_threshold_hours": 168
+  },
+  "namespaced_identifiers": false,
+  "permissions": [
+    ["allow",
+      ["group:Anonymous"],
+      ["write_data"]
+    ]
+  ]
+}

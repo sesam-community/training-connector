@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-customer-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-customer-collect",
+    "supports_signalling": false
+  }
+}

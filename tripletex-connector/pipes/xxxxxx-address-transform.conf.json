@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-address-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-address-collect",
+    "supports_signalling": false
+  }
+}

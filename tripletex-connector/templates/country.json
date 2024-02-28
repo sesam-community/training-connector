@@ -1,0 +1,80 @@
+[
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-all",
+    "namespaced_identifiers": false,
+    "source": {
+      "operation": "{{@ datatype @}}-list",
+      "system": "{{@ system @}}",
+      "type": "rest"
+    },
+    "type": "pipe"
+  },
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-collect",
+    "namespaced_identifiers": false,
+    "source": {
+      "dataset": "{{@ system @}}-{{@ datatype @}}-all",
+      "type": "dataset"
+    },
+    "transform": {
+      "rules": {
+        "default": [
+          [
+            "copy",
+            "*"
+          ],
+          [
+            "merge",
+            [
+              "max",
+              "_.",
+              [
+                "apply",
+                "last-modified",
+                "_S.changes"
+              ]
+            ]
+          ],
+          [
+            "add",
+            "changes",
+            [
+              "filter",
+              [
+                "eq",
+                "_.changeType",
+                "CREATE"
+              ],
+              "_S.changes"
+            ]
+          ]
+        ],
+        "last-modified": [
+          [
+            "filter",
+            [
+              "in",
+              "_S.changeType",
+              [
+                "list",
+                "UPDATE",
+                "CREATE"
+              ]
+            ]
+          ],
+          [
+            "add",
+            "$last-modified",
+            [
+              "datetime-parse",
+              "%Y-%m-%dT%H:%M:%S%z",
+              "_S.timestamp"
+            ]
+          ]
+        ]
+      },
+      "type": "dtl"
+    },
+    "type": "pipe"
+  }
+]

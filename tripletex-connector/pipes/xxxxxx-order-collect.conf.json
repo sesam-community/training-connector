@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-order-collect",
+  "type": "pipe",
+  "source": {
+    "type": "merge_datasets",
+    "datasets": ["xxxxxx-order-all", "xxxxxx-order-event-processed"]
+  },
+  "namespaced_identifiers": false
+}

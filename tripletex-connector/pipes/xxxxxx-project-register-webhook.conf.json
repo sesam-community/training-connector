@@ -1,0 +1,39 @@
+{
+  "_id": "xxxxxx-project-register-webhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "project-create",
+      "_updated": 0,
+      "properties": {
+        "event": "project.create",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-project-event/entities"
+      }
+    }, {
+      "_id": "project-update",
+      "_updated": 1,
+      "properties": {
+        "event": "project.update",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-project-event/entities"
+      }
+    }, {
+      "_id": "project-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "project.delete",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-project-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "transform": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "side_effects": true
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

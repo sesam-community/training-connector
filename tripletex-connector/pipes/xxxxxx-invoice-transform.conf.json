@@ -1,0 +1,9 @@
+{
+  "_id": "xxxxxx-invoice-transform",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-invoice-collect",
+    "supports_signalling": false
+  }
+}

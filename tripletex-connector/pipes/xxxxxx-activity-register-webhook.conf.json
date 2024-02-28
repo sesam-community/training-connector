@@ -1,0 +1,39 @@
+{
+  "_id": "xxxxxx-activity-register-webhook",
+  "type": "pipe",
+  "source": {
+    "type": "embedded",
+    "entities": [{
+      "_id": "activity-create",
+      "_updated": 0,
+      "properties": {
+        "event": "activity.create",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-activity-event/entities"
+      }
+    }, {
+      "_id": "activity-update",
+      "_updated": 1,
+      "properties": {
+        "event": "activity.update",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-activity-event/entities"
+      }
+    }, {
+      "_id": "activity-delete",
+      "_updated": 2,
+      "properties": {
+        "event": "activity.delete",
+        "targetUrl": "$ENV(service_url)/receivers/xxxxxx-activity-event/entities"
+      }
+    }],
+    "supports_since": true
+  },
+  "transform": {
+    "type": "rest",
+    "system": "xxxxxx",
+    "operation": "webhook-insert",
+    "replace_entity": false,
+    "side_effects": true
+  },
+  "comment": "WARNING! This pipe is generated from the template of the 'customer' datatype and changes will be silently ignored during collapse. For more information see the connectorpy README.",
+  "namespaced_identifiers": false
+}

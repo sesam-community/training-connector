@@ -1,11 +1,11 @@
 # Tripletex
-A Sesam connector for Tripletex
+A Sesam connector for training purposes. Simulates a push receiver working with a rest system, in this case Tripletex.
 
 # How to test
 
 Add the following variables to an ``.authconfig`` file at the root:
 
-`base_url` and `token` (used by the special tripletexlogin.py in connector-cli), see https://developer.tripletex.no/docs/documentation/getting-started/1-creating-a-test-account/
+`Consumer token` and `Employee token` stated here: [https://github.com/datanav/sesam-talk-config/wiki/Connectors:Tripletex under the Workshop section](https://github.com/datanav/sesam-talk-config/wiki/Connectors:Tripletex)
 
 ## Setting up Webhooks
 

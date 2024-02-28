@@ -17,20 +17,12 @@ The entity (entities) you push should have the following general structure:
 ```json
 [
     {
-        "_id": "90213",
-        "id": "90213",
-        "email": "kafka3@companymail.com",
-        "name": "Kafka3 company",
-        "phoneNumber": "+47 98798787",
-        "website": "www.kafkacompany.com"
+        "_id": "<my-company-id>",
+        "id": "<my-company-id>",
+        "email": "<my-company-email>",
+        "name": "<my-company-name>",
+        "phoneNumber": "<my-company-phonenumber>",
+        "website": "<my-company-website>"
     }
 ]
 ```
-
-To enable webhooks you must ensure that the service_url environment variable is set in your metadata config of your subscription. The service_url should look like so:
-
-``https://<your_datahub_id>.sesam.cloud/api``
-
-To register your webhooks make sure to run the webhook register pipes for each of your defined datatypes that support webhooks.
-
-Verify in the execution log for each of your webhooks pipes that the pipe succeeded in registering the webhooks.

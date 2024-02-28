@@ -5,7 +5,7 @@ A Sesam connector for training purposes. Simulates a push receiver working with 
 
 Add the following variables to an ``.authconfig`` file at the root:
 
-`Consumer token` and `Employee token` stated here: [https://github.com/datanav/sesam-talk-config/wiki/Connectors:Tripletex under the Workshop section](https://github.com/datanav/sesam-talk-config/wiki/Connectors:Tripletex)
+`Consumer token` and `Employee token` stated here: https://github.com/datanav/sesam-talk-config/wiki/Connectors:Tripletex under the **Sesam training** section
 
 ## Setting up Webhooks
 

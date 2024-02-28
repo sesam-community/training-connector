@@ -75,6 +75,5 @@
       ]
     }
   }],
-  "exclude_completeness": ["xxxxxx-customer-event2", "xxxxxx-customer-share"],
   "namespaced_identifiers": false
 }

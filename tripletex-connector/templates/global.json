@@ -1,0 +1,25 @@
+{
+  "_id": "{{@ system @}}-{{@ datatype @}}-organisation",
+  "metadata": {
+    "{{@ datatype @}}": true
+  },
+  "source": {
+    "datasets": [
+      "kafka-company-organisation-enrich kafka-organisation-enrich",
+      "{{@ system @}}-customer-organisation-enrich {{@ system @}}-customer-enrich"
+    ],
+    "equality_sets": [
+      [
+        "{{@ system @}}-customer-enrich.$ids",
+        "{{@ system @}}-customer-enrich.ps:P170",
+        "kafka-organisation-enrich.$ids",
+        "kafka-organisation-enrich.ps:P170"
+      ]
+    ],
+    "identity": "first",
+    "strategy": "compact",
+    "type": "merge",
+    "version": 2
+  },
+  "type": "pipe"
+}

@@ -1,0 +1,96 @@
+{
+  "_id": "xxxxxx-customer-transform-split",
+  "type": "pipe",
+  "source": {
+    "type": "dataset",
+    "dataset": "xxxxxx-global-organisation"
+  },
+  "sink": {
+    "set_initial_offset": "onload"
+  },
+  "transform": [{
+    "type": "dtl",
+    "rules": {
+      "default": [
+        ["copy", "*"],
+        ["comment", "** Add equivalent types **"],
+        ["if",
+          ["in", "xxxxxx-customer",
+            ["map",
+              ["ni-ns", "_."], "_S.$ids"]
+          ],
+          [
+            ["create",
+              ["apply", "emit",
+                ["filter",
+                  ["eq",
+                    ["ni-ns", "_."], "xxxxxx-customer"], "_S.$ids"]
+              ]
+            ]
+          ],
+          [
+            ["create",
+              ["apply", "emit-new",
+                ["list", "_S.$ids"]
+              ]
+            ]
+          ]
+        ],
+        ["discard"]
+      ],
+      "emit": [
+        ["merge-union", "_R._T"],
+        ["add", "_id",
+          ["string", "_S."]
+        ],
+        ["add", "$ids", "_R._S.$ids"],
+        ["add", "xxxxxx-customer:id",
+          ["ni-id", "_S."]
+        ],
+        ["add", "_deleted", "_R._S._deleted"]
+      ],
+      "emit-new": [
+        ["merge-union", "_R._T"],
+        ["add", "_id", "_R._S._id"],
+        ["add", "_deleted", "_R._S._deleted"]
+      ],
+      "split": [
+        ["discard",
+          ["and",
+            ["is-not-empty", "_S.ps:"],
+            ["neq",
+              ["ni-id", "_S.ps:"], ""]
+          ]
+        ],
+        ["merge-union", "_R._T"],
+        ["add", "p:", "_S."],
+        ["add", "_id",
+          ["concat",
+            ["string",
+              ["path", "ps:P248",
+                ["filter",
+                  ["eq",
+                    ["ni-ns", "_.ps:P248"], "xxxxxx-customer"], "_S."]
+              ]
+            ], "-",
+            ["replace", ":", "-",
+              ["string", "_S.ps:"]
+            ]
+          ]
+        ],
+        ["add", "$original_source_id",
+          ["path", "ps:P248",
+            ["filter",
+              ["eq",
+                ["ni-ns", "_.ps:P248"], "xxxxxx-customer"], "_S."]
+          ]
+        ]
+      ]
+    }
+  }],
+  "pump": {
+    "run_at_startup_if_not_populated": true
+  },
+  "add_namespaces": false,
+  "rescan_when_config_changes": true
+}

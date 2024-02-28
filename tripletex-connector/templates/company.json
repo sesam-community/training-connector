@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "kafka-{{@ datatype @}}-all",
+    "namespaced_identifiers": false,
+    "source": {
+      "type": "http_endpoint"
+    },
+    "type": "pipe"
+  },
+  {
+    "_id": "kafka-{{@ datatype @}}-collect",
+    "source": {
+      "dataset": "kafka-{{@ datatype @}}-all",
+      "type": "dataset"
+    },
+    "type": "pipe"
+  }
+]

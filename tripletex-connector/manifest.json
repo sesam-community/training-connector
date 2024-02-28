@@ -6,55 +6,25 @@
   "auth": "api_key",
   "auth_variant": "tripletex",
   "datatypes": {
-    "address": {
-      "label": "Address",
-      "sync_frequency": "slow",
-      "template": "templates/country.json"
+    "company": {
+      "template": "templates/company.json"
+    },
+    "company-organisation": {
+      "template": "templates/company-organisation.json"
     },
     "customer": {
       "label": "Customer",
       "schedule_interval": 3600,
       "template": "templates/customer.json"
     },
-    "product": {
-      "label": "Product",
-      "schedule_interval": 14400,
-      "template": "templates/contact.json"
+    "customer-organisation": {
+      "template": "templates/customer-organisation.json"
     },
-    "productgroup": {
-      "label": "Product Group",
-      "sync_frequency": "slow",
-      "template": "templates/customercategory.json"
+    "customer-transform": {
+      "template": "templates/customer-transform.json"
     },
-    "productgrouprelation": {
-      "label": "Product Group Relation",
-      "sync_frequency": "slow",
-      "template": "templates/customercategory.json"
-    },
-    "productunit": {
-      "label": "Product Unit",
-      "sync_frequency": "slow",
-      "template": "templates/customercategory.json"
-    },
-    "project": {
-      "label": "Project",
-      "schedule_interval": 14400,
-      "template": "templates/contact.json"
-    },
-    "projectcategory": {
-      "label": "Project Category",
-      "sync_frequency": "slow",
-      "template": "templates/customercategory.json"
-    },
-    "supplier": {
-      "label": "Supplier",
-      "schedule_interval": 3600,
-      "template": "templates/customer.json"
-    },
-    "vattype": {
-      "label": "VAT Type",
-      "sync_frequency": "slow",
-      "template": "templates/country.json"
+    "global": {
+      "template": "templates/global.json"
     },
     "webhook": {
       "template": "templates/webhook.json"

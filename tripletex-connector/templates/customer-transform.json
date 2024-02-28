@@ -1,0 +1,218 @@
+{
+  "_id": "{{@ system @}}-{{@ datatype @}}-split",
+  "add_namespaces": false,
+  "pump": {
+    "run_at_startup_if_not_populated": true
+  },
+  "rescan_when_config_changes": true,
+  "sink": {
+    "set_initial_offset": "onload"
+  },
+  "source": {
+    "dataset": "{{@ system @}}-global-organisation",
+    "type": "dataset"
+  },
+  "transform": [
+    {
+      "rules": {
+        "default": [
+          [
+            "copy",
+            "*"
+          ],
+          [
+            "comment",
+            "** Add equivalent types **"
+          ],
+          [
+            "if",
+            [
+              "in",
+              "{{@ system @}}-customer",
+              [
+                "map",
+                [
+                  "ni-ns",
+                  "_."
+                ],
+                "_S.$ids"
+              ]
+            ],
+            [
+              [
+                "create",
+                [
+                  "apply",
+                  "emit",
+                  [
+                    "filter",
+                    [
+                      "eq",
+                      [
+                        "ni-ns",
+                        "_."
+                      ],
+                      "{{@ system @}}-customer"
+                    ],
+                    "_S.$ids"
+                  ]
+                ]
+              ]
+            ],
+            [
+              [
+                "create",
+                [
+                  "apply",
+                  "emit-new",
+                  [
+                    "list",
+                    "_S.$ids"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "discard"
+          ]
+        ],
+        "emit": [
+          [
+            "merge-union",
+            "_R._T"
+          ],
+          [
+            "add",
+            "_id",
+            [
+              "string",
+              "_S."
+            ]
+          ],
+          [
+            "add",
+            "$ids",
+            "_R._S.$ids"
+          ],
+          [
+            "add",
+            "{{@ system @}}-customer:id",
+            [
+              "ni-id",
+              "_S."
+            ]
+          ],
+          [
+            "add",
+            "_deleted",
+            "_R._S._deleted"
+          ]
+        ],
+        "emit-new": [
+          [
+            "merge-union",
+            "_R._T"
+          ],
+          [
+            "add",
+            "_id",
+            "_R._S._id"
+          ],
+          [
+            "add",
+            "_deleted",
+            "_R._S._deleted"
+          ]
+        ],
+        "split": [
+          [
+            "discard",
+            [
+              "and",
+              [
+                "is-not-empty",
+                "_S.ps:"
+              ],
+              [
+                "neq",
+                [
+                  "ni-id",
+                  "_S.ps:"
+                ],
+                ""
+              ]
+            ]
+          ],
+          [
+            "merge-union",
+            "_R._T"
+          ],
+          [
+            "add",
+            "p:",
+            "_S."
+          ],
+          [
+            "add",
+            "_id",
+            [
+              "concat",
+              [
+                "string",
+                [
+                  "path",
+                  "ps:P248",
+                  [
+                    "filter",
+                    [
+                      "eq",
+                      [
+                        "ni-ns",
+                        "_.ps:P248"
+                      ],
+                      "{{@ system @}}-customer"
+                    ],
+                    "_S."
+                  ]
+                ]
+              ],
+              "-",
+              [
+                "replace",
+                ":",
+                "-",
+                [
+                  "string",
+                  "_S.ps:"
+                ]
+              ]
+            ]
+          ],
+          [
+            "add",
+            "$original_source_id",
+            [
+              "path",
+              "ps:P248",
+              [
+                "filter",
+                [
+                  "eq",
+                  [
+                    "ni-ns",
+                    "_.ps:P248"
+                  ],
+                  "{{@ system @}}-customer"
+                ],
+                "_S."
+              ]
+            ]
+          ]
+        ]
+      },
+      "type": "dtl"
+    }
+  ],
+  "type": "pipe"
+}

@@ -1,0 +1,8 @@
+{
+  "_id": "kafka-company-all",
+  "type": "pipe",
+  "source": {
+    "type": "http_endpoint"
+  },
+  "namespaced_identifiers": false
+}
